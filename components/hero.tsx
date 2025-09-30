@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils";
 import { Spotlight } from "@/components/ui/spotlight"
+import { TextEffect } from '@/components/motion-primitives/text-effect';
 
 export function Hero() {
   const scrollToContact = () => {
@@ -12,7 +13,7 @@ export function Hero() {
   }
 
   return (
-<section className="relative min-h-screen flex items-center bg-background overflow-hidden">
+    <section className="relative min-h-screen flex items-center bg-background overflow-hidden">
 
       <Spotlight
         className="-top-40 left-0 md:-top-20 md:left-60"
@@ -33,29 +34,30 @@ export function Hero() {
               </div>
               <span className="text-sm font-medium">Available 24/7</span>
             </div>
-
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] text-balance">
-              Freight
+              <TextEffect per="word" as="span" preset="blur" delay={0.5}>Freight</TextEffect>
               <br />
-              <span className="text-muted-foreground">Solutions</span>
+              <TextEffect per="word" as="span" preset="blur" delay={1} className="text-muted-foreground">Solutions</TextEffect>
               <br />
-              That Move
+              <TextEffect per="word" as="span" preset="blur" delay={1.5}>That Move</TextEffect>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl">
+
+
+            <TextEffect per='char' as='p' preset='fade' delay={0.5} className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl">
               Professional trucking services across North America. Reliable, efficient, and always on time.
-            </p>
+            </TextEffect>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/quote">
-              <Button
-                size="lg"
-                className="text-lg px-8 h-14 bg-foreground text-background hover:bg-foreground/90"
-              >
-                Get a Quote <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+                <Button
+                  size="lg"
+                  className="text-lg px-8 h-14 bg-foreground text-background hover:bg-foreground/90"
+                >
+                  Get a Quote <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
               </Link>
-              
+
               <Button
                 size="lg"
                 variant="outline"
