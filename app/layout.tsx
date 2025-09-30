@@ -21,8 +21,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          (function() {
+            try {
+              const storedTheme = localStorage.getItem('theme');
+              const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+              document.documentElement.classList.add(theme);
+            } catch(e) {}
+          })();
+        `,
+          }}
+        />
+      </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
           <Suspense fallback={null}>
             {children}
             <Toaster />
@@ -31,5 +47,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+
   )
 }

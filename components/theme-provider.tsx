@@ -18,21 +18,54 @@ type ThemeProviderState = {
 
 const ThemeProviderContext = React.createContext<ThemeProviderState | undefined>(undefined)
 
-export function ThemeProvider({ children, defaultTheme = "light", attribute = "class", ...props }: ThemeProviderProps) {
+export function ThemeProvider({
+  children,
+  defaultTheme = "light",
+  attribute = "class",
+  enableSystem = false,
+  ...props
+}: ThemeProviderProps) {
   const [theme, setTheme] = React.useState<Theme>(defaultTheme)
 
+  // Load theme from localStorage or system preference
+  React.useEffect(() => {
+    const storedTheme = localStorage.getItem("theme") as Theme | null
+    if (storedTheme) {
+      setTheme(storedTheme)
+    } else if (enableSystem) {
+      const systemTheme: Theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+      setTheme(systemTheme)
+    }
+  }, [enableSystem])
+
+  // Listen for system theme changes
+  React.useEffect(() => {
+    if (!enableSystem) return
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    const handleChange = (e: MediaQueryListEvent) => {
+      const storedTheme = localStorage.getItem("theme") as Theme | null
+      if (!storedTheme) {
+        setTheme(e.matches ? "dark" : "light")
+      }
+    }
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [enableSystem])
+
+  // Apply theme class to document root
   React.useEffect(() => {
     const root = window.document.documentElement
     root.classList.remove("light", "dark")
     root.classList.add(theme)
   }, [theme])
 
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      setTheme(theme)
-    },
+  const setThemeAndSave = (newTheme: Theme) => {
+    setTheme(newTheme)
+    localStorage.setItem("theme", newTheme)
   }
+
+  const value = { theme, setTheme: setThemeAndSave }
 
   return (
     <ThemeProviderContext.Provider {...props} value={value}>
@@ -41,10 +74,9 @@ export function ThemeProvider({ children, defaultTheme = "light", attribute = "c
   )
 }
 
+// Hook to use theme
 export const useTheme = () => {
   const context = React.useContext(ThemeProviderContext)
-
-  if (context === undefined) throw new Error("useTheme must be used within a ThemeProvider")
-
+  if (!context) throw new Error("useTheme must be used within a ThemeProvider")
   return context
 }

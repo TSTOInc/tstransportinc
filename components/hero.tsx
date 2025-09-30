@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export function Hero() {
   const scrollToContact = () => {
@@ -39,13 +40,15 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Link href="/quote">
               <Button
                 size="lg"
-                onClick={scrollToContact}
                 className="text-lg px-8 h-14 bg-foreground text-background hover:bg-foreground/90"
               >
                 Get a Quote <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
+              </Link>
+              
               <Button
                 size="lg"
                 variant="outline"
