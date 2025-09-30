@@ -318,7 +318,7 @@ export function Hero() {
                   y2="250"
                   stroke="currentColor"
                   strokeWidth="1"
-                  className="text-primary/50"
+                  className="text-primary/20"
                 />
               </svg>
 
