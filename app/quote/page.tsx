@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import Footer  from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"

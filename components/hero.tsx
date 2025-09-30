@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { cn } from "@/lib/utils";
+import { Spotlight } from "@/components/ui/spotlight"
 
 export function Hero() {
   const scrollToContact = () => {
@@ -10,7 +12,12 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-[110vh] flex items-center bg-background overflow-hidden">
+<section className="relative min-h-screen flex items-center bg-background overflow-hidden">
+
+      <Spotlight
+        className="-top-40 left-0 md:-top-20 md:left-60"
+        fill="white"
+      />
       {/* Subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:64px_64px]" />
 

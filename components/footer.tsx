@@ -1,31 +1,76 @@
-import { Truck } from "lucide-react"
+import { Logo } from '@/components/logo'
+import Link from 'next/link'
 
-export function Footer() {
-  return (
-    <footer className="bg-muted text-foreground py-16">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-foreground/20">
-          <div className="flex items-center gap-3">
-            <div className="flex gap-1.5">
-              
-              
-              
+const links = [
+    {
+        group: 'Company',
+        items: [
+            {
+                title: 'Home',
+                href: '/',
+            },
+            {
+                title: 'services',
+                href: '/services',
+            },
+            {
+                title: 'Quote',
+                href: '/quote',
+            }
+        ],
+    },
+    {
+        group: 'Legal',
+        items: [
+            {
+                title: 'Terms & Conditions',
+                href: '/terms-and-conditions',
+            },
+            {
+                title: 'Privacy Policy',
+                href: '/privacy-policy',
+            }
+        ],
+    },
+]
+
+export default function Footer() {
+    return (
+        <footer className="border-b bg-white pt-20 dark:bg-transparent">
+            <div className="mx-auto max-w-5xl px-6">
+                <div className="grid gap-12 md:grid-cols-5">
+                    <div className="md:col-span-2">
+                        <Link
+                            href="/"
+                            aria-label="go home"
+                            className="block size-fit">
+                            <Logo />
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 md:col-span-3" dir="rtl">
+                        {links.map((link, index) => (
+                            <div
+                                key={index}
+                                className="space-y-4 text-sm">
+                                <span className="block font-medium">{link.group}</span>
+                                {link.items.map((item, index) => (
+                                    <Link
+                                        key={index}
+                                        href={item.href}
+                                        className="text-muted-foreground hover:text-primary block duration-150">
+                                        <span>{item.title}</span>
+                                    </Link>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="mt-12 flex flex-wrap items-end justify-between gap-6 border-t py-6">
+                    <span className="text-muted-foreground order-last block text-center text-sm md:order-first">© {new Date().getFullYear()} Three Stars Transport Inc. All rights reserved.</span>
+                    <span className="text-muted-foreground block text-sm">Designed by <a href="https://github.com/Angel-999" target="_blank" className="underline hover:text-primary duration-150">Angel Dominguez</a></span>
+                </div>
             </div>
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Three Stars Transport Inc Logo" className="h-8 w-8 object-contain" />
-              <span className="text-xl font-bold">Three Stars Transport Inc.</span>
-            </div>
-          </div>
-          <div className="text-center md:text-right">
-            <p className="text-foreground/80 text-sm">DOT# 2357598 | MC# 807667</p>
-          </div>
-        </div>
-        <div className="pt-8 text-center md:text-left">
-          <p className="text-foreground/60 text-sm">
-            © {new Date().getFullYear()} Three Stars Transport Inc. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
-  )
+        </footer>
+    )
 }
