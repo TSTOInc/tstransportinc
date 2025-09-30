@@ -12,7 +12,7 @@ export function Footer() {
               
             </div>
             <div className="flex items-center gap-2">
-              <Truck className="w-6 h-6" />
+              <img src="/logo.png" alt="Three Stars Transport Inc Logo" className="h-8 w-8 object-contain" />
               <span className="text-xl font-bold">Three Stars Transport Inc.</span>
             </div>
           </div>

@@ -12,7 +12,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <Truck className="w-6 h-6 text-foreground" />
+              <img src="/logo.png" alt="Three Stars Transport Inc Logo" className="h-10 w-10 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-foreground leading-tight">Three Stars Transport Inc.</h1>
               </div>
