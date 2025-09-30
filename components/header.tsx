@@ -14,11 +14,14 @@ export function Header() {
             <div className="flex items-center gap-2">
               <img src="/logo.png" alt="Three Stars Transport Inc Logo" className="h-10 w-10 object-contain" />
               <div>
-                <h1 className="text-xl font-bold text-foreground leading-tight">Three Stars Transport Inc.</h1>
+                <h1 className="hidden md:block text-xl font-bold text-foreground leading-tight">
+  Three Stars Transport Inc.
+</h1>
+
               </div>
             </div>
           </Link>
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center gap-6">
             <Link href="/" className="text-sm font-medium text-foreground hover:text-foreground/80 transition-colors">
               Home
             </Link>

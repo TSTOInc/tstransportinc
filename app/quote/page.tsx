@@ -11,6 +11,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Truck, Package, Clock, Shield } from "lucide-react"
 import { useState } from "react"
+import QuoteForm from "@/components/forms/quote-form"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 
 export default function QuotePage() {
   const [formData, setFormData] = useState({
@@ -66,7 +68,7 @@ export default function QuotePage() {
               { icon: Truck, title: "Modern Fleet", desc: "Latest equipment" },
               { icon: Package, title: "All Freight Types", desc: "Any size, any load" },
             ].map((feature, i) => (
-              <div key={i} className="p-6 bg-muted/30 rounded-xl border border-border">
+              <div key={i} className="p-6 bg-muted/30 rounded-xl border border-border hover:border-foreground transition-all duration-300">
                 <feature.icon className="w-8 h-8 mb-4 text-foreground" strokeWidth={1.5} />
                 <h3 className="font-bold mb-1">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground">{feature.desc}</p>
@@ -79,146 +81,16 @@ export default function QuotePage() {
       {/* Quote Form */}
       <section className="pb-32 px-4">
         <div className="container mx-auto max-w-4xl">
-          <form onSubmit={handleSubmit} className="space-y-8 p-8 md:p-12 bg-muted/30 rounded-2xl border border-border">
-            <div>
-              <h2 className="text-3xl font-bold mb-2">Request a Quote</h2>
-              <p className="text-muted-foreground">All fields are required unless marked optional</p>
-            </div>
+          <Card>
+            <CardHeader className="pl-16 pt-8">
+              <h2 className="text-4xl font-bold mb-2">Request a Quote</h2>
+              <p className=" text-muted-foreground">All fields are required unless marked optional</p>
+            </CardHeader>
+            <CardContent>
+              <QuoteForm />
+            </CardContent>
 
-            {/* Contact Information */}
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold">Contact Information</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => handleChange("name", e.target.value)}
-                    placeholder="John Smith"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="company">Company Name (Optional)</Label>
-                  <Input
-                    id="company"
-                    value={formData.company}
-                    onChange={(e) => handleChange("company", e.target.value)}
-                    placeholder="Acme Corp"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleChange("email", e.target.value)}
-                    placeholder="john@example.com"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleChange("phone", e.target.value)}
-                    placeholder="(555) 123-4567"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Shipment Details */}
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold">Shipment Details</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="serviceType">Service Type</Label>
-                  <Select value={formData.serviceType} onValueChange={(value) => handleChange("serviceType", value)}>
-                    <SelectTrigger id="serviceType">
-                      <SelectValue placeholder="Select service type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="full-truckload">Full Truckload (FTL)</SelectItem>
-                      <SelectItem value="less-than-truckload">Less Than Truckload (LTL)</SelectItem>
-                      <SelectItem value="refrigerated">Refrigerated Transport</SelectItem>
-                      <SelectItem value="expedited">Expedited Shipping</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="pickupDate">Pickup Date</Label>
-                  <Input
-                    id="pickupDate"
-                    type="date"
-                    value={formData.pickupDate}
-                    onChange={(e) => handleChange("pickupDate", e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="origin">Origin (City, State)</Label>
-                  <Input
-                    id="origin"
-                    value={formData.origin}
-                    onChange={(e) => handleChange("origin", e.target.value)}
-                    placeholder="Los Angeles, CA"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="destination">Destination (City, State)</Label>
-                  <Input
-                    id="destination"
-                    value={formData.destination}
-                    onChange={(e) => handleChange("destination", e.target.value)}
-                    placeholder="New York, NY"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="weight">Weight (lbs)</Label>
-                  <Input
-                    id="weight"
-                    type="number"
-                    value={formData.weight}
-                    onChange={(e) => handleChange("weight", e.target.value)}
-                    placeholder="5000"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="dimensions">Dimensions (L x W x H in inches)</Label>
-                  <Input
-                    id="dimensions"
-                    value={formData.dimensions}
-                    onChange={(e) => handleChange("dimensions", e.target.value)}
-                    placeholder="48 x 40 x 60"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="details">Additional Details (Optional)</Label>
-                <Textarea
-                  id="details"
-                  value={formData.details}
-                  onChange={(e) => handleChange("details", e.target.value)}
-                  placeholder="Any special requirements, handling instructions, or additional information..."
-                  rows={4}
-                />
-              </div>
-            </div>
-
-            <Button type="submit" size="lg" className="w-full md:w-auto px-12">
-              Submit Quote Request
-            </Button>
-          </form>
+          </Card>
         </div>
       </section>
 

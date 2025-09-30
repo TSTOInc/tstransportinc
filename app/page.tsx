@@ -6,12 +6,21 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+}
+
 export const metadata = {
   title: "Three Stars Transport Inc | Reliable Trucking Services",
   description: "Three Stars Transport Inc provides reliable and efficient trucking services. Contact us for freight shipping solutions.",
-  keywords: ["trucking", "freight", "transport", "logistics", "Three Stars Transport", "Three Stars", "transport inc", "three stars transport inc", "TST", "shipping", "cargo", "delivery", "truck services", "hauling", "fleet", "long haul", "short haul", "freight solutions"],
+  keywords: [
+    "trucking", "freight", "transport", "logistics", "Three Stars Transport",
+    "Three Stars", "transport inc", "three stars transport inc", "TST",
+    "shipping", "cargo", "delivery", "truck services", "hauling",
+    "fleet", "long haul", "short haul", "freight solutions"
+  ],
   authors: [{ name: "Three Stars Transport Inc" }],
-  viewport: "width=device-width, initial-scale=1",
   openGraph: {
     title: "Three Stars Transport Inc | Reliable Trucking Services",
     description: "Three Stars Transport Inc provides reliable and efficient trucking services. Contact us for freight shipping solutions.",

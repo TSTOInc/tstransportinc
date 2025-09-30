@@ -10,7 +10,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-background overflow-hidden">
+    <section className="relative min-h-[110vh] flex items-center bg-background overflow-hidden">
       {/* Subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:64px_64px]" />
 

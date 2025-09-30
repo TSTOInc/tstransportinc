@@ -95,7 +95,7 @@ export default function ServicesPage() {
               business needs.
             </p>
             <Link href="/quote">
-              <Button size="lg" className="px-8">
+              <Button size="lg" variant="secondary" className="px-8">
                 Get a Quote
               </Button>
             </Link>
@@ -110,7 +110,7 @@ export default function ServicesPage() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="grid md:grid-cols-2 gap-12 items-start p-8 md:p-12 bg-background rounded-2xl border border-border"
+                className="grid md:grid-cols-2 gap-12 items-start p-8 md:p-12 bg-background rounded-2xl border border-border hover:border-foreground transition-all duration-300"
               >
                 <div>
                   <div className="mb-6">
@@ -150,7 +150,7 @@ export default function ServicesPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {advantages.map((advantage, index) => (
-              <div key={index} className="p-8 bg-muted/30 rounded-xl border border-border">
+              <div key={index} className="p-8 bg-muted/30 rounded-xl border border-border hover:border-foreground transition-all duration-300">
                 <advantage.icon className="w-10 h-10 mb-6 text-foreground" strokeWidth={1.5} />
                 <h3 className="text-xl font-bold mb-3">{advantage.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{advantage.description}</p>
@@ -168,7 +168,7 @@ export default function ServicesPage() {
             Get a competitive quote in under 2 hours and experience the Three Stars difference.
           </p>
           <Link href="/quote">
-            <Button size="lg" className="px-12">
+            <Button size="lg" className="px-12" variant="secondary">
               Request a Quote
             </Button>
           </Link>
