@@ -38,30 +38,21 @@ import {
 import {
     Textarea
 } from "@/components/ui/textarea"
+import { contactFormSchema } from "@/lib/schemas"
+import { send } from "@/lib/email"
 
-const formSchema = z.object({
-    full_name: z.string().min(1).min(3).max(256),
-    email: z.string(),
-    phone: z.string(),
-    company: z.string().min(1).optional(),
-    message: z.string()
-});
 
 export default function ContactForm() {
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof contactFormSchema>>({
+        resolver: zodResolver(contactFormSchema),
 
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit(values: z.infer<typeof contactFormSchema>) {
         try {
-            console.log(values);
-            toast(
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                    <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-                </pre>
-            );
+            send(values)
+            toast.success("Form submitted successfully!")
         } catch (error) {
             console.error("Form submission error", error);
             toast.error("Failed to submit the form. Please try again.");

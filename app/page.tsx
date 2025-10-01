@@ -3,8 +3,9 @@ import { Services } from "@/components/services"
 import { About } from "@/components/about"
 import { Contact } from "@/components/contact"
 import { Header } from "@/components/header"
-import  Footer  from "@/components/footer"
+import Footer from "@/components/footer"
 import LogoCloud from "@/components/logo-cloud"
+
 
 
 export const viewport = {
@@ -47,9 +48,10 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="min-h-screen">
+
       <Header />
       <Hero />
-            <LogoCloud />
+      <LogoCloud />
       <Services />
       <About />
 

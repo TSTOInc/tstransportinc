@@ -4,6 +4,7 @@ import { Truck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
+import { toast } from "sonner"
 
 export function Header() {
   return (
@@ -15,8 +16,8 @@ export function Header() {
               <img src="/logo.png" alt="Three Stars Transport Inc Logo" className="h-10 w-10 object-contain" />
               <div>
                 <h1 className="hidden md:block text-xl font-bold text-foreground leading-tight">
-  Three Stars Transport Inc.
-</h1>
+                  Three Stars Transport Inc.
+                </h1>
 
               </div>
             </div>
