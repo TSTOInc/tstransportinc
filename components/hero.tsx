@@ -45,7 +45,7 @@ export function Hero() {
 
 
             <TextEffect per='char' as='p' preset='fade' delay={0.5} className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl">
-              Professional trucking services across North America. Reliable, efficient, and always on time.
+              Three Stars Transport Inc provides professional trucking services across North America. Reliable, efficient, and always on time.
             </TextEffect>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
