@@ -75,7 +75,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Email</h3>
-                  <p className="text-muted-foreground break-all">{"dispatch@tstransportinc.com\n"}</p>
+                  <p className="text-muted-foreground break-all">{"threestars039@gmail.com\n"}</p>
                 </div>
               </div>
 
@@ -101,7 +101,7 @@ export function Contact() {
                   <h3 className="font-semibold text-lg mb-2">Hours</h3>
                   <div className="text-muted-foreground space-y-1">
                     <p>Dispatch: 24/7</p>
-                    <p>Office: Mon-Fri 8AM-6PM</p>
+                    <p>Office: Mon-Fri 8AM-5PM</p>
                   </div>
                 </div>
               </div>

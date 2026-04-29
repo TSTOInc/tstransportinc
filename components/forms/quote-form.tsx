@@ -216,7 +216,7 @@ export default function QuoteForm() {
                   <PhoneInput
                     placeholder="(555) 123-4567"
                     {...field}
-                    defaultCountry="TR"
+                    defaultCountry="US"
                   />
                 </FormControl>
 
